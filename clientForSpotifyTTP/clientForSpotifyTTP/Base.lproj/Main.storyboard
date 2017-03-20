@@ -53,6 +53,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Server For Spotify" id="fEc-8F-Azh">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="Vxb-np-8QM"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="l45-HJ-cD1">
                             <connections>
                                 <segue destination="3bw-BT-V8s" kind="show" identifier="addSegue" id="Sp8-yp-thH"/>
