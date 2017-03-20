@@ -1,12 +1,27 @@
 # clientForSpotifyTTP
-Coding Challenge for Spotify Fellowship via NYC Tech Talent Pipeline
+My submission for Spotify Fellowship via NYC Tech Talent Pipeline's coding challenge.
 
-Client in Swift 3 format.
+The Client is in Swift 3 format.
 
 My heroku server for the challenge is found here: https://serverforspotify.herokuapp.com/people
 
-| <img src="https://github.com/viczhong/clientForSpotifyTTP/blob/master/Screen1.png" width="250"> | <img src="https://github.com/viczhong/clientForSpotifyTTP/blob/master/Screen2.png" width="250"> |
-|---|---|
+Client does as follows:
+
+|GET, DELETE (edit in row)|POST|GET/:id, PUT, DELETE|
+|---|---|---|
+| <img src="https://github.com/viczhong/clientForSpotifyTTP/blob/master/Screen1.png" width="250"> | <img src="https://github.com/viczhong/clientForSpotifyTTP/blob/master/Screen3.png" width="250"> | <img src="https://github.com/viczhong/clientForSpotifyTTP/blob/master/Screen2.png" width="250"> |
+
+---
+
+Client: The client makes requests via session data tasks for the GET, GET/:id, POST, PUT, and DELETE operations to the specified endpoint. For GET and GET/:id, they query the server for either all entries or the specific unique ID, respectively.
+
+For the POST and PUT, it appends the JSON serialized message body of the request to the data task of the HTTP URL session. For DELETE, it just sends a DELETE request to delete that entry.
+
+---
+
+RESTful server: As I am unfamiliar with setting up servers, I mostly followed a tutorial for a framework and database program I am unfamiliar with: Angular.js and MongoDB, respectively. I mostly kept things basic, except for the installation of a module that allows for auto-incremental sequencing, which is functional not out-of-the-box with MongoDB.
+
+I implemented GET, GET/:id, POST, PUT, and DELETE operations, to the way I am accustomed and in its simplest form. I believe it should fulfill all of the requirements of the challenge.
 
 ---
 
