@@ -15,28 +15,23 @@ enum PersonModelParseError: Error {
 class Person {
     let id: Int
     let name: String
-    let email: String?
-    let favoriteCity: String?
+    let favoriteCity: String
     
     init(id: Int,
          name: String,
-         email: String?,
-         favoriteCity: String?) {
+         favoriteCity: String) {
         self.id = id
         self.name = name
-        self.email = email
         self.favoriteCity = favoriteCity
     }
     
-    convenience init?(from dictionary: [String:AnyObject]) throws {
+    convenience init?(from dictionary: [String : Any]) throws {
         guard let id = dictionary["_id"] as? Int,
             let name = dictionary["name"] as? String,
-            let email = dictionary["email"] as? String?,
-            let favoriteCity = dictionary["favoriteCity"] as? String? else { throw PersonModelParseError.parsing }
+            let favoriteCity = dictionary["favoriteCity"] as? String else { throw PersonModelParseError.parsing }
         
         self.init(id: id,
                   name: name,
-                  email: email,
                   favoriteCity: favoriteCity)
     }
     
@@ -46,7 +41,7 @@ class Person {
         do {
             let jsonData: Any = try JSONSerialization.jsonObject(with: data, options: [])
             
-            guard let response = jsonData as? [[String : AnyObject]] else {
+            guard let response = jsonData as? [[String : Any]] else {
                 throw PersonModelParseError.results
             }
             

@@ -63,21 +63,7 @@ class TableViewController: UITableViewController {
         if let person = people {
             let personAtRow = person[indexPath.row]
             cell.textLabel?.text = personAtRow.name
-            var detailText = ""
-            
-            if let email = personAtRow.email {
-                detailText += "Email: \(email)"
-            }
-            
-            if let city = personAtRow.favoriteCity {
-                if personAtRow.email != nil {
-                    detailText += ", "
-                }
-                
-                detailText += "Favorite City: \(city)"
-            }
-            
-            cell.detailTextLabel?.text = detailText
+            cell.detailTextLabel?.text = "Favorite City: \(personAtRow.favoriteCity)"
         }
         
         return cell

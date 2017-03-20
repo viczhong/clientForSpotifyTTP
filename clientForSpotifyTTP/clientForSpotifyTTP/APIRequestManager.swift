@@ -50,7 +50,7 @@ class APIRequestManager {
             }
             guard let validData = data else { return }
             do {
-                let json = try JSONSerialization.jsonObject(with: validData, options: []) as? [String:Any]
+                let json = try JSONSerialization.jsonObject(with: validData, options: []) as? [String : Any]
                 if let validJson = json {
                     print(validJson)
                 }
@@ -88,20 +88,16 @@ class APIRequestManager {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        var data: [String : Any] = [:]
-        if let email = person.email, let city = person.favoriteCity {
-            data = [
-                "name" : person.name,
-                "email" : email,
-                "favoriteCity" : city
-            ]
-        }
+        let data: [String : Any] = [
+            "name" : person.name,
+            "favoriteCity" : person.favoriteCity
+        ]
         
         do {
             let body = try JSONSerialization.data(withJSONObject: data, options: [])
             request.httpBody = body
         }
-        
+            
         catch {
             print("Error posting body: \(error)")
         }
@@ -125,7 +121,7 @@ class APIRequestManager {
                     print(validJson)
                 }
             }
-            
+                
             catch {
                 print("Error converting json: \(error)")
             }

@@ -19,7 +19,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     // Text Fields
     
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     
     // Buttons
@@ -41,7 +40,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         updateButton.isEnabled = false
         loadPersonIntoTextFields()
         
-        let textFields = [nameTextField, emailTextField, cityTextField]
+        let textFields = [nameTextField, cityTextField]
         
         _ = textFields.map {
             $0?.delegate = self
@@ -54,13 +53,27 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Functions and Methods
     
     func textFieldDidChange(_ textField: UITextField) {
+        // If user edits a field, allow for Update
         updateButton.isEnabled = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // If Name field is first responder, return key should move cursor to city field
+        if textField == nameTextField {
+            nameTextField.resignFirstResponder()
+            cityTextField.becomeFirstResponder()
+            return true
+        }
+        else {
+            // If City field is first responder, return key should dismiss keyboard so user can observe changes
+            self.view.endEditing(true)
+            return false
+        }
     }
     
     func loadPersonIntoTextFields() {
         if let person = person {
             nameTextField.text = person.name
-            emailTextField.text = person.email
             cityTextField.text = person.favoriteCity
         }
     }
@@ -68,9 +81,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     func putEntry() {
         if let person = person,
             let name = nameTextField.text,
-            let email = emailTextField.text,
             let city = cityTextField.text {
-            let editedPerson = Person(id: person.id, name: name, email: email, favoriteCity: city)
+            let editedPerson = Person(id: person.id, name: name, favoriteCity: city)
             
             APIRequestManager.manager.putRequest(endPoint: endpoint, id: person.id, person: editedPerson)
             _ = self.navigationController?.popViewController(animated: true)

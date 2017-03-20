@@ -13,7 +13,6 @@ class AddPersonViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Outlets and Properties
     
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     
     @IBOutlet weak var addButton: UIButton!
@@ -25,7 +24,7 @@ class AddPersonViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         addButton.isEnabled = false
-        self.nameTextField.delegate = self
+        _ = [nameTextField, cityTextField].map { $0?.delegate = self }
         nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
@@ -35,12 +34,26 @@ class AddPersonViewController: UIViewController, UITextFieldDelegate {
         addButton.isEnabled = true
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // If Name field is first responder, return key should move cursor to City field
+        if textField == nameTextField {
+            nameTextField.resignFirstResponder()
+            cityTextField.becomeFirstResponder()
+            return true
+        }
+            // If City field is first responder, return key should Add the Person
+        else if textField == cityTextField {
+            self.view.endEditing(true)
+            postEntry()
+        }
+        return false
+    }
+    
     func postEntry() {
-        if let name = nameTextField.text, let email = emailTextField.text, let city = cityTextField.text {
+        if let name = nameTextField.text, let city = cityTextField.text {
             
             let data: [String : Any] = [
                 "name" : name,
-                "email" : email,
                 "favoriteCity" : city
             ]
             
