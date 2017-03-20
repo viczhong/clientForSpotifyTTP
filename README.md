@@ -5,11 +5,12 @@ The Client is in Swift 3 format.
 
 My heroku server for the challenge is found here: https://serverforspotify.herokuapp.com/people
 
-Client does as follows:
+Client performs the following operations:
 
 |GET, DELETE (edit in row)|POST|GET/:id, PUT, DELETE|
-|---|---|---|
+|:---:|:---:|:---:|
 | <img src="https://github.com/viczhong/clientForSpotifyTTP/blob/master/Screen1.png" width="250"> | <img src="https://github.com/viczhong/clientForSpotifyTTP/blob/master/Screen3.png" width="250"> | <img src="https://github.com/viczhong/clientForSpotifyTTP/blob/master/Screen2.png" width="250"> |
+| Home Screen | Add Person Screen | Edit Person Screen |
 
 ---
 
