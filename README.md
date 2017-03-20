@@ -14,18 +14,21 @@ Client performs the following operations:
 
 ---
 
-Client: The client makes requests via session data tasks for the GET, GET/:id, POST, PUT, and DELETE operations to the specified endpoint. For GET and GET/:id, they query the server for either all entries or the specific unique ID, respectively.
+### Client
+The client makes requests via session data tasks for the GET, GET/:id, POST, PUT, and DELETE operations to the specified endpoint. For GET and GET/:id, they query the server for either all entries or the specific unique ID, respectively.
 
 For the POST and PUT, it appends the JSON serialized message body of the request to the data task of the HTTP URL session. For DELETE, it just sends a DELETE request to delete that entry.
 
 ---
 
-RESTful server: As I am unfamiliar with setting up servers, I mostly followed a tutorial for a framework and database program I am unfamiliar with: Angular.js and MongoDB, respectively. I mostly kept things basic, except for the installation of a module that allows for auto-incremental sequencing, which is functional not out-of-the-box with MongoDB.
+### RESTful server
+As I am unfamiliar with setting up servers, I mostly followed a tutorial for a framework and database program I am unfamiliar with: Angular.js and MongoDB, respectively. I mostly kept things basic, except for the installation of a module that allows for auto-incremental sequencing, which is functional not out-of-the-box with MongoDB.
 
 I implemented GET, GET/:id, POST, PUT, and DELETE operations, to the way I am accustomed and in its simplest form. I believe it should fulfill all of the requirements of the challenge.
 
 ---
 
+### Challenge Notes
 To complete this question you will need to write both a client and a server. We are agnostic to how you design the client (mobile web, iOS, Android, desktop web) but it will need to be able to make HTTP requests to a specific endpoints.  The server you create will also need to be able to respond to HTTP requests to specific endpoints.  It is not important what language or framework you use to build your server.
 
 The client should do the following in order
