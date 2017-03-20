@@ -3,7 +3,7 @@ Coding Challenge for Spotify Fellowship via NYC Tech Talent Pipeline
 
 Client in Swift 3 format.
 
-Heroku server for the challenge is found here: https://serverforspotify.herokuapp.com/people
+My heroku server for the challenge is found here: https://serverforspotify.herokuapp.com/people
 
 ---
 
